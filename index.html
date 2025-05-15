@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>360° Image Gallery</title>
+    <meta name="description" content="360° Image Gallery - A-Frame" />
+    <!-- A-Frame最新版（1.7.0） -->
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+    <!-- 独自set-imageコンポーネント -->
+    <script src="components/set-image.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img
+          id="city"
+          src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg"
+        />
+        <img
+          id="cubes"
+          src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg"
+        />
+        <img
+          id="sechelt"
+          src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"
+        />
+        <img
+          id="city-thumb"
+          src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg"
+        />
+        <img
+          id="cubes-thumb"
+          src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-cubes.jpg"
+        />
+        <img
+          id="sechelt-thumb"
+          src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-sechelt.jpg"
+        />
+        <audio
+          id="click-sound"
+          src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"
+        ></audio>
+      </a-assets>
+
+      <!-- 背景画像（radiusを100に拡大） -->
+      <a-sky id="image-360" radius="100" src="#city"></a-sky>
+
+      <!-- サムネイル画像を直接配置 -->
+      <a-plane
+        position="-1.5 -1 -4"
+        width="1"
+        height="1"
+        material="shader: flat; src: #cubes-thumb"
+        set-image="on: click; target: #image-360; src: #cubes"
+        sound="on: click; src: #click-sound"
+      ></a-plane>
+
+      <a-plane
+        position="0 -1 -4"
+        width="1"
+        height="1"
+        material="shader: flat; src: #city-thumb"
+        set-image="on: click; target: #image-360; src: #city"
+        sound="on: click; src: #click-sound"
+      ></a-plane>
+
+      <a-plane
+        position="1.5 -1 -4"
+        width="1"
+        height="1"
+        material="shader: flat; src: #sechelt-thumb"
+        set-image="on: click; target: #image-360; src: #sechelt"
+        sound="on: click; src: #click-sound"
+      ></a-plane>
+    </a-scene>
+  </body>
+</html>
