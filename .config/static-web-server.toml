@@ -1,0 +1,46 @@
+[general]
+# Replit上でサーバーを公開するための設定
+host = "0.0.0.0"         # すべてのアクセスを受け付ける（Replitで必要）
+port = 80                # HTTPでよく使うポート番号
+
+# 公開するファイルの場所（このReplitのプロジェクトの中身すべて）
+root = "./"
+
+# 表示しないログのレベル（"error"ならエラーだけ表示）
+log-level = "error"
+log-remote-address = false  # アクセスしてきた人の情報は表示しない
+
+# フォルダの中身を一覧表示するか（falseで表示しない）
+directory-listing = false
+
+# キャッシュ（古い情報を保存しないようにする）
+cache-control-headers = false
+
+# 他のサイトからのアクセスを許可（A-Frameなどで読み込む時に必要）
+cors-allow-origins = "*"
+
+# 「index.html」がトップページとして開かれるようにする
+index-files = "index.html"
+
+# 「.git」や「.DS_Store」など、隠しファイルを見せない
+ignore-hidden-files = true
+
+# シンボリックリンクという特殊なファイルを無効にする
+disable-symlinks = true
+
+# ★ 特別なファイル形式（3Dモデル）に正しいタイプを教える
+mime-types = [
+  { extension = "glb",  type = "model/gltf-binary" },   # GLB形式（バイナリ型の3Dモデル）
+  { extension = "gltf", type = "model/gltf+json" }      # GLTF形式（JSON型の3Dモデル）
+]
+
+[advanced]
+
+# すべてのファイルにキャッシュを無効にする設定を追加
+[[advanced.headers]]
+source = "**"   # すべてのファイルに対して
+[advanced.headers.headers]
+Cache-Control = "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+Pragma = "no-cache"
+Expires = "0"
+
